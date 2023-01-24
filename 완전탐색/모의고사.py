@@ -20,7 +20,7 @@ def solution(answers):
                 count+=1
         answer_cnt[i+1]=count
     ans=[k for k,v in answer_cnt.items() if max(answer_cnt.values())==v]
-    print(ans)
+    return ans
 
 # 다르게
 def solution(answers):
@@ -44,4 +44,33 @@ def solution(answers):
 
     return result
 
-solution([1,3,2,2,5,2,2,2,2,2,2,2])
+# 처음에 하려고 했던거
+def solution(answers):
+    student = [[1, 2, 3, 4, 5],
+               [2, 1, 2, 3, 2, 4, 2, 5],
+               [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]]
+    score = [0, 0, 0]
+
+    for i in range(len(student)):
+        print(len(student))
+        if len(answers)%len(student[i])==0:
+            for n in range(len(answers)//len(student[i])):
+                for idx in range(len(student[i])):
+                    if student[i][idx]==answers[len(student[i])*n+idx]:
+                        score[i]+=1
+        else:
+            for n in range(len(answers)//len(student[i])+1):
+                for idx in range(len(student[i])):
+                    if student[i][idx]==answers[len(student[i])*n+idx]:
+                        score[i]+=1
+                    if len(student[i])*n+idx == len(answers)-1:
+                        print(len(student[i])*n+idx, len(answers)-1)
+                        break 
+    result=[]
+    for idx,value in enumerate(score):
+        idx+=1
+        if value == max(score):
+            result.append(idx)
+    return result
+
+print(solution([1,3,2,4,2,1,3,2,4,2,1,3,2,4,2]))
