@@ -12,5 +12,9 @@ def solution(phone_number):
     repeated='*'*len(phone_number[:-4])
     return phone_number.replace(phone_number[:-4],repeated)
 
-print(solution('078109622298145'))
+def solution2(phone_number):
+    repeated='*'*len(phone_number[:-4])
+    return repeated+phone_number[-4:]
+
+print(solution2('078109622298145'))
 
