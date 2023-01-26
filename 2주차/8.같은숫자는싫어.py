@@ -49,13 +49,19 @@ arr=[4,4,4,3,3]
 #     return str_to_int
 
 # 효율성 테스트 통과 못함2
+# def solution(arr):
+#     for i in range(0,len(arr)-1):
+#         if arr[i]==arr[i+1]:
+#             arr[i]='x'
+#     while 'x' in arr:
+#         arr.remove('x')
+#     return arr
+
 def solution(arr):
-    if len(arr)>1:
-        for i in range(0,len(arr)-1):
-            if arr[i]==arr[i+1]:
-                arr[i]='x'
-    while 'x' in arr:
-        arr.remove('x')
-    return arr
+    ans=[arr[0]]
+    for i in range(0,len(arr)-1):
+        if arr[i]!=arr[i+1]:
+            ans.append(arr[i+1])
+    return ans
 
 print(solution(arr))
