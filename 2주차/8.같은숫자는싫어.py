@@ -35,7 +35,7 @@
 #     return arr
 # 인덱스를 저장해뒀다가 나중에 빼도 결과는 처음에 했던거랑 똑같은
 # IndexError: pop index out of range
-arr=[4,4,4,3,3]
+arr=[1,3,3,0,1,1]
 
 # 효율성 테스트 통과 못함
 # def solution(arr):
@@ -64,4 +64,30 @@ def solution(arr):
             ans.append(arr[i+1])
     return ans
 
-print(solution(arr))
+# print(solution(arr))
+
+s=[1,3,3,0,1,1,2,2,2,2,1]
+
+def no_continuous(s):
+    a=[ v for i,v in enumerate(s) if s[i-1]!=s[i] or i==0 ]
+    return a
+
+def no_continuous(s):
+    a=[]
+    for i,v in enumerate(s):
+        if s[i-1]!=s[i] or i==0:
+            # print('1st condition:',s[i-1]!=s[i])
+            # print('2nd condition:',i==0)
+            # print('---------')
+            a.append(v)
+    return a
+
+def no_continuous(s):
+    j = 0
+    for i in range(len(s)-1):
+        if s[i+1+j] == s[i+j]:
+            del s[i+j]
+            j -= 1
+    return s
+
+print(no_continuous(s))
