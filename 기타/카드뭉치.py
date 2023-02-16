@@ -17,3 +17,14 @@ def solution(cards1, cards2, goal):
         if idx_list[i]>idx_list[i+1]:
             return "No"
     return "Yes"
+
+def solution(cards1, cards2, goal):
+    i,j=0,0
+    for card in goal:
+        if card in cards1[i:]:
+            i=cards1.index(card)+1
+        elif card in cards2[j:]:
+            j=cards2.index(card)+1
+        else:
+            return "No"
+    return "Yes"
