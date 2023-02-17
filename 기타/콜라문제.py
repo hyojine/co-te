@@ -6,3 +6,10 @@ def solution(a, b, n):
         bottles.append((x//a)*b)
         x=(x//a)*b+x%a
     return sum(bottles)
+
+def solution(a, b, n):
+    count=0
+    while n>=a:
+        n=n-a+b
+        count+=1
+    return b*count
