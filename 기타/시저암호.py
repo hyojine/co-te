@@ -14,6 +14,17 @@ def solution(s, n):
             ans.append(letter)       
     return ''.join(ans)
 
-s='ab'
-n=1
-print(solution(s,n))
+def solution(s, n):
+    ans=[]
+    for letter in s:
+        if not letter.isalpha():
+            ans.append(letter)
+        else:
+            idx=ord(letter.upper())+n
+            if idx>90:
+                idx-=26
+            if letter.islower():
+                ans.append(chr(idx).lower())
+            else:
+                ans.append(chr(idx))
+    return ''.join(ans)
