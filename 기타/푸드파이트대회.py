@@ -9,4 +9,10 @@ def solution(food):
     food.extend(reversed(food[:-1]))
     return ''.join(food)
 
-print(solution([1, 7, 1, 2]))
+def solution2(food):
+    food=[(x//2)*str(i) for i,x in enumerate(food) if x != 1]
+    food.append('0')
+    food.extend(food[-2::-1])
+    return ''.join(food)
+
+print([x for x in range(4,0,-1)])
