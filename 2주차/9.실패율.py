@@ -109,3 +109,24 @@ def solution3(N, stages):
     return failure_sorted
 
 # print(solution3(5,[2, 1, 2, 6, 2, 4, 3, 3]))
+def solution4(N, stages):
+    # answer = []
+    fail = []
+    info = [0] * (N + 2)
+    for stage in stages:
+        info[stage] += 1
+    for i in range(N):
+        numerator = info[i + 1]
+        denominator = sum(info[(i + 1):])
+        if denominator == 0:
+            fail.append((i + 1, 0))
+        else:
+            fail.append((i + 1, numerator / denominator))
+    
+    # 리스트로
+    # for item in sorted(fail, key=lambda x: x[1], reverse=True):
+    #     answer.append(int(item[0]))
+    
+    # 딕셔너리로
+    fail=dict(fail)
+    return sorted(fail, key=lambda x: fail[x], reverse=True)
