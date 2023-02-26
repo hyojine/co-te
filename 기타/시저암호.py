@@ -28,3 +28,27 @@ def solution(s, n):
             else:
                 ans.append(chr(idx))
     return ''.join(ans)
+
+def solution(s, n):
+    ans=[]
+    for letter in s:
+        if not letter.isalpha():
+            ans.append(letter)
+        else:
+            idx=(ord(letter.upper())-ord('A')+n)%26+ord('A')
+            if letter.islower():
+                ans.append(chr(idx).lower())
+            else:
+                ans.append(chr(idx))
+    return ''.join(ans)
+
+def solution(s, n):
+    s=list(s)
+    for i,letter in enumerate(s):
+        if letter.isalpha():
+            idx=(ord(letter.upper())-ord('A')+n)%26+ord('A')
+            if letter.islower():
+                s[i]=(chr(idx).lower()) #s[i]대신 letter을 쓰면 틀림
+            else:
+                 s[i]=(chr(idx))
+    return ''.join(s)
