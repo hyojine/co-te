@@ -24,3 +24,12 @@ def solution(wallpaper):
     x=[x[0] for x in answer]
     y=[x[1] for x in answer]  
     return [min(x),min(y),max(x)+1,max(y)+1]
+
+def solution(wallpaper):
+    x,y=[],[]
+    for ir,row in enumerate(wallpaper):
+        for id,i in enumerate(row):
+            if i=='#':
+                x.append(ir)
+                y.append(id)
+    return [min(x),min(y),max(x)+1,max(y)+1]
