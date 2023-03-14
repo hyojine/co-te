@@ -24,15 +24,12 @@ def solution(p):
             p_close+=1
         if p_open == p_close:
             u,v= p[:i+1],p[i+1:]
-    
+            break
     if check(u):
         return u+solution(v)
     else:
-        answer='('
-        answer+=solution(v)
-        answer+=')'
-        
-        for uu in u[1:len(u) - 1]:
+        answer='('+solution(v)+')'
+        for uu in u[1:len(u)-1]:
             if uu == '(':
                 answer += ')'
             else:
