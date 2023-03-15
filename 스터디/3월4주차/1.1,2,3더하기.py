@@ -17,12 +17,30 @@
 # 1+1+1+1+1, 1+1+1+2(4자리니까 4가지), 1+1+3(3가지), 2+2+1(3가지), 3+2(2가지)
 
 import sys
+
 T=int(input())
 for t in range(T):
     n=int(sys.stdin.readline())
-    dp = [0]*11
-    for i in range(1,n+1):
+    dp = [0]*(n+1) 
+    for i in range(1,len(dp)):
         dp[i]=dp[i-3]+dp[i-2]+dp[i-1]
-        if i<4:
-            dp[i]+=1 # 자기 자신만으로도 완성하는 경우가 추가됨
+        if i<4: 
+            print(i)
+            dp[i]+=1 
     print(dp[n])
+
+# 재귀로
+def solution(x):
+    answer=0
+    if x==1:
+       return answer+1
+    elif x==2:
+        return answer+2
+    elif x==3:
+        return answer+4
+    return solution(x-3)+solution(x-2)+solution(x-1)
+
+T=int(input())
+for _ in range(T):
+    n=int(input())
+    print(solution(n))
