@@ -44,3 +44,19 @@ T=int(input())
 for _ in range(T):
     n=int(input())
     print(solution(n))
+
+# 다른 재귀로
+def solution(sum,n):
+    if sum>n:
+        return 0
+    elif sum == n: # 성공
+        return 1
+    curr =0
+    for i in range(1,4):
+        curr+=solution(sum+i,n)
+    return curr
+
+T=int(input())
+for _ in range(T):
+    n=int(input())
+    print(solution(0,n))
