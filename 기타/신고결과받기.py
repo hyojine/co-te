@@ -38,3 +38,18 @@ def solution(id_list, report, k):
         if ee in re_list:
             ans[er]+=1
     return list(ans.values())
+
+def solution(id_list, report, k):
+    reports={x:0 for x in id_list}
+    er_ee=[x.split(' ') for x in set(report)]
+    answer=[0]*len(id_list)
+    
+    for er,ee in er_ee:
+        reports[ee]+=1
+    
+    for er,ee in er_ee:
+        if reports[ee]>=k:
+            answer[id_list.index(er)]+=1
+
+    return answer
+                    
