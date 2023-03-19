@@ -12,7 +12,7 @@
 from itertools import combinations
 from collections import Counter
 
-def solution(orders, course):
+def solution0(orders, course):
     course_combi={}
     for c in course:
         temp=[]
@@ -29,7 +29,49 @@ def solution(orders, course):
     answer=[]
     for k in combi_freq:
         for kk in k.keys():
+            if k[kk]==max(list(k.values())) and k[kk]>=2: #max(k.value())
+                answer.append(''.join(kk))
+    answer.sort()
+    return answer
+
+from itertools import combinations
+from collections import Counter
+
+def solution1(orders, course):
+    course_combi={}
+    combi_freq=[]
+    for c in course:
+        temp=[]
+        for order in orders:
+            if len(order)>=c:
+                order=''.join(sorted(order))
+                temp.extend(list(combinations(order, c)))
+        course_combi[c]=temp
+        combi_freq.append(dict(Counter(temp)))
+        
+    answer = []
+    print(combi_freq)
+    for k in combi_freq:
+        for kk in k.keys():
             if k[kk]==max(list(k.values())) and k[kk]>=2:
                 answer.append(''.join(kk))
+    answer.sort()
+    return answer
+
+from itertools import combinations
+from collections import Counter
+
+def solution2(orders, course):
+    answer = []
+    for c in course:
+        temp=[]
+        for order in orders:
+            if len(order)>=c:
+                order=''.join(sorted(order))
+                temp.extend(list(combinations(order, c)))
+        combi_freq=(dict(Counter(temp)))
+        for cf in combi_freq.keys():
+            if combi_freq[cf]==max(list(combi_freq.values())) and combi_freq[cf]>=2:
+                answer.append(''.join(cf))
     answer.sort()
     return answer
