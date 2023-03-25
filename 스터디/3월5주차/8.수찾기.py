@@ -23,9 +23,9 @@ nlist=sorted(map(int,sys.stdin.readline().split()))
 m=int(input())
 mlist=list(map(int,sys.stdin.readline().split()))
 
-start=0
-end=n-1
 for mm in mlist:
+    start=0
+    end=n-1
     while start<=end:
         if mm==nlist[(start+end)//2]:
             print(1)
