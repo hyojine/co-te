@@ -1,22 +1,17 @@
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        answer=[]
+        stack=[]
         ans=0
-        if len(s)==1:
-            return 1
         for ss in s:
-            if ss not in answer:
-                answer.append(ss)
-                if len(answer)>ans:    
-                    ans=len(answer)
+            if ss not in stack:
+                stack.append(ss)
+                if len(stack)>ans:    
+                    ans=len(stack)
             else:
-                if answer and answer[0]==ss:
-                    if len(answer)>ans:
-                        ans=len(answer)
-                    answer.pop(0)
-                else:
-                    idx=answer.index(ss)
-                    answer=answer[idx+1:]
-                answer.append(ss)
+                idx=stack.index(ss)
+                stack=stack[idx+1:]
+                stack.append(ss)
         return ans
                     
