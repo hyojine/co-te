@@ -13,3 +13,15 @@ class Solution:
         if flag:
             rev*=(-1)
         return rev if (rev <2**31 and rev>=-2**31) else 0
+
+class Solution:
+    def reverse(self, x: int) -> int:
+        if x==0:
+            return 0
+        ans=str(x)[::-1]
+        if ans[0]=='0':
+            ans=ans[1:]
+        if ans[-1]=='-':
+            ans='-'+ans[:-1]
+        ans=int(ans)
+        return ans if -2**31<=ans<2**31 else 0
