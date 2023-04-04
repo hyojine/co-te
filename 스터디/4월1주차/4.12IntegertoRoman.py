@@ -8,12 +8,9 @@ class Solution:
             if num//k !=4:
                 ans+=(num//k)*roman[k]
             else:
-                if ans:
-                    if ans[-1]==roman[list(roman.keys())[i-1]]:
-                        ans=ans[:-1]
-                        ans+=roman[k]+(roman[list(roman.keys())[i-2]])
-                    else:
-                        ans+=roman[k]+(roman[list(roman.keys())[i-1]])
+                if ans and ans[-1]==roman[list(roman.keys())[i-1]]:
+                    ans=ans[:-1]
+                    ans+=roman[k]+(roman[list(roman.keys())[i-2]])
                 else:
                     ans+=roman[k]+(roman[list(roman.keys())[i-1]])
             num=num%k
