@@ -1,5 +1,6 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/42577
 
+# 효율성 시간초과
 def solution(phone_book):
     answer = True
     for p in phone_book:
@@ -26,3 +27,16 @@ def solution(phone_book):
 # 테스트 18 〉	통과 (695.01ms, 10.4MB)
 # 테스트 19 〉	통과 (1272.28ms, 10.4MB)
 # 테스트 20 〉	통과 (1337.49ms, 10.2MB)
+
+def solution(phone_book):
+    answer = True
+    hash_table={}
+    for p in phone_book:
+        hash_table[hash(p)]=p
+    for p in phone_book:
+        temp=''
+        for l in p:
+            temp+=l
+            if temp!=p and hash(temp) in hash_table:
+                return False
+    return answer
