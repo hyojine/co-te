@@ -11,8 +11,6 @@ def solution(nums):
     count = 0
     for a, b, c in combinations(nums, 3):
         if len([(i, (a+b+c)//i) for i in range(1, int((a+b+c)**0.5)+1) if (a+b+c) % i == 0]) == 1:
-            print([(i, (a+b+c)//i)
-                  for i in range(1, int((a+b+c)**0.5)+1) if (a+b+c) % i == 0])
             count += 1
     return count
 
