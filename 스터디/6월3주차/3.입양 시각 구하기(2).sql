@@ -1,0 +1,13 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/59413
+
+WITH RECURSIVE TIME AS(
+    SELECT 0 as hour
+    UNION ALL
+    SELECT hour + 1 FROM time
+    WHERE HOUR < 23)
+    
+SELECT HOUR(AO.DATETIME) HOUR, COUNT(AO.ANIMAL_ID) COUNT
+FROM ANIMAL_OUTS AO
+JOIN TIME T
+GROUP BY T.HOUR
+ORDER BY T.HOUR
